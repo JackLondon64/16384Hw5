@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Gradescope runs this for every submission.
+set -euo pipefail
+
+# The container has no display. Nothing graded imports matplotlib, but a
+# student's double_pendulum.py may (for their own plots), and without a
+# non-interactive backend that import can fail or hang.
+export MPLBACKEND=Agg
+
+python3 /autograder/source/grade.py
